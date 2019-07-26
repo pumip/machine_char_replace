@@ -1,8 +1,9 @@
 ﻿
 ; 機種依存文字を普通の文字に置換する関数
+; todo: 配列を1行ずつpushではなくcsvにまとめてloop readしたかった
 machine_char_replace(str) {
 
-	; Unicode → JIS文字集合 異字体変換テーブル by AnaKutsu/character_variants_unicode_to_jis(https://github.com/AnaKutsu/character_variants_unicode_to_jis)
+	; Unicode → JIS文字集合 異字体変換テーブル@AnaKutsu(https://github.com/AnaKutsu/character_variants_unicode_to_jis)
 	arr:=[]
 	arr.push({"pattern": "\x{00B9}", "replace": chr(0x0031)}) ;配列として一気に宣言しようとすると長すぎてエラーになるためpushしていく
 	arr.push({"pattern": "\x{00BA}", "replace": chr(0x006F)})
