@@ -7,11 +7,11 @@ machine_char_replace(str) {
 	Ifnotexist, %A_scriptdir%\lib\hankana_list.csv
 		throw "機種依存文字一覧ファイルmachine_char_list.csvを" . A_scriptdir . "\lib\フォルダに配置してください"
 		
-	arr_list	:=[]
+	arr_list    :=[]
 	loop, read, %A_scriptdir%\lib\machine_char_list.csv
 	{
-		arr_row			:=strsplit(A_LoopReadLine, ",")
-		replace_codes	:=[]
+		arr_row         :=strsplit(A_LoopReadLine, ",")
+		replace_codes   :=[]
 		while (arr_row.HasKey(A_index + 1)) {
 			replace_codes.push(arr_row[A_index + 1])
 		}
@@ -19,9 +19,9 @@ machine_char_replace(str) {
 	}
 
 	For, key, val in arr_list {
-		replace_texts	:=""
+		replace_texts   :=""
 		while (val["replace"].HasKey(A_index)) {
-			replace_texts	.=chr(val["replace"][A_index])
+			replace_texts   .=chr(val["replace"][A_index])
 		}
 		str	:=Regexreplace(str, "" . val.pattern . "", "" . replace_texts . "")
 	}
